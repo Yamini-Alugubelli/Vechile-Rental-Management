@@ -1,24 +1,27 @@
-﻿using System;
+﻿namespace Assignment3;
 
 public class Car : Vehicle
 {
-    private int numberOfSeats;
-
-    public int NumberOfSeats
-    {
-        get { return numberOfSeats; }
-        set { numberOfSeats = value; }
-    }
-
-    public Car(string model, string manufacturer, int year, double rentalPrice, int numberOfSeats)
+    public int Seats { get; set; }
+    public string EngineType { get; set; }
+    public string Transmission { get; set; }
+    public bool Convertible { get; set; }
+    //Car constructor
+    public Car(string model, string manufacturer, int year, decimal rentalPrice, int seats, string engineType, string transmission, bool convertible)
         : base(model, manufacturer, year, rentalPrice)
     {
-        NumberOfSeats = numberOfSeats;
+        Seats = seats;
+        EngineType = engineType;
+        Transmission = transmission;
+        Convertible = convertible;
     }
-
-    public override void DisplayDetails()
+    //DisplayDetails Method
+    public override void displayDetails()
     {
-        base.DisplayDetails();
-        Console.WriteLine($"Number of Seats: {NumberOfSeats}");
+        base.displayDetails();
+        Console.WriteLine($"Seats: {Seats}");
+        Console.WriteLine($"Engine Type: {EngineType}");
+        Console.WriteLine($"Transmission: {Transmission}");
+        Console.WriteLine($"Convertible: {Convertible}");
     }
 }

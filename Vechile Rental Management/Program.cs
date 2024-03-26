@@ -1,20 +1,23 @@
-﻿
-using System;
+﻿namespace Assignment3;
 
 class Program
 {
     static void Main(string[] args)
     {
-        RentalAgency agency = new RentalAgency();
+        Car car = new Car("Camry", "Toyota", 2015, 20.50m, 4, "V4", "Automatic", false);
+        Car car2 = new Car("F150", "Ford", 2020, 40.50m, 4, "V8", "Manual", true);
 
-        Car car1 = new Car("Civic", "Honda", 2022, 50, 5);
-        Truck truck1 = new Truck("F150", "Ford", 2020, 100, 5000);
-        Motorcycle bike1 = new Motorcycle("Ninja", "Kawasaki", 2019, 30, "Sport");
+        Truck truck = new Truck("Silverado", "Chevrolet", 2020, 50.50m, 1000, "Diesel", true);
 
-        agency.AddVehicle(car1);
-        agency.AddVehicle(truck1);
-        agency.AddVehicle(bike1);
+        Motorcycle motorcycle = new Motorcycle("CBR", "Honda", 2022, 30.50m, 1000, "Gasoline", true);
 
-        agency.DisplayAllVehiclesDetails();
+        RentalAgency agency = new RentalAgency(10);
+        agency.addVehicle(car);
+        agency.addVehicle(car2);
+        agency.addVehicle(truck);
+        agency.addVehicle(motorcycle);
+
+        agency.rentVehicle(car);
+        motorcycle.displayDetails();
     }
 }

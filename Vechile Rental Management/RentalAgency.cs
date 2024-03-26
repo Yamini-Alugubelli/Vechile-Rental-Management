@@ -1,25 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace Assignment3;
 
 public class RentalAgency
 {
-    private List<Vehicle> vehicles;
+    private Vehicle[] Fleet { get; set; }
+    public decimal TotalRevenue { get; private set; }
 
-    public RentalAgency()
+    public RentalAgency(int fleetSize)
     {
-        vehicles = new List<Vehicle>();
+        Fleet = new Vehicle[fleetSize];
     }
-
-    public void AddVehicle(Vehicle vehicle)
+    //AddVechile method
+    public void addVehicle(Vehicle vehicle)
     {
-        vehicles.Add(vehicle);
-    }
-
-    public void DisplayAllVehiclesDetails()
-    {
-        foreach (var vehicle in vehicles)
+        for (int i = 0; i < Fleet.Length; i++)
         {
-            vehicle.DisplayDetails();
+            if (Fleet[i] == null)
+            {
+                Fleet[i] = vehicle;
+                return;
+            }
+        }
+
+        Console.WriteLine("The fleet is full.");
+    }
+    //Remove Vechile method
+    public void removeVehicle(Vehicle vehicle)
+    {
+        for (int i = 0; i < Fleet.Length; i++)
+        {
+            if (Fleet[i] != null && Fleet[i].GetType() == vehicle.GetType())
+            {
+                Fleet[i] = null;
+                return;
+            }
+        }
+
+        Console.WriteLine("The vehicle is not in the fleet.");
+    }
+    //Rent Vechile method
+    public void rentVehicle(Vehicle vehicle)
+    {
+        if (Fleet.Any(v => v == vehicle))
+        {
+            Console.WriteLine("Vehicle rented.");
+            TotalRevenue += vehicle.RentalPrice;
+        }
+        else
+        {
+            Console.WriteLine("The vehicle is not in the fleet.");
         }
     }
 }

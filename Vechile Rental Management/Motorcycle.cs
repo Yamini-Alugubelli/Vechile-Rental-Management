@@ -1,24 +1,24 @@
-﻿using System;
+﻿namespace Assignment3;
 
 public class Motorcycle : Vehicle
 {
-    private string type;
-
-    public string Type
-    {
-        get { return type; }
-        set { type = value; }
-    }
-
-    public Motorcycle(string model, string manufacturer, int year, double rentalPrice, string type)
+    public int EngineCapacity { get; set; }
+    public string FuelType { get; set; }
+    public bool HasFairing { get; set; }
+    //MotorCycle constructor
+    public Motorcycle(string model, string manufacturer, int year, decimal rentalPrice, int engineCapacity, string fuelType, bool hasFairing)
         : base(model, manufacturer, year, rentalPrice)
     {
-        Type = type;
+        EngineCapacity = engineCapacity;
+        FuelType = fuelType;
+        HasFairing = hasFairing;
     }
-
-    public override void DisplayDetails()
+    //Display Details method
+    public override void displayDetails()
     {
-        base.DisplayDetails();
-        Console.WriteLine($"Type: {Type}");
+        base.displayDetails();
+        Console.WriteLine($"Engine Capacity: {EngineCapacity}");
+        Console.WriteLine($"Fuel Type: {FuelType}");
+        Console.WriteLine($"Has Fairing: {HasFairing}");
     }
 }
